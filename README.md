@@ -1,5 +1,5 @@
-Pa11y Dashboard
-===============
+Pa11y Dashboard for Medicines Beta
+==================================
 
 Pa11y Dashboard is a web interface to the [Pa11y][pa11y] accessibility reporter; allowing you to focus on *fixing* issues rather than hunting them down.
 
