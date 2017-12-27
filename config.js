@@ -34,7 +34,7 @@ if (fs.existsSync(jsonPath)) {
             database: env('WEBSERVICE_DATABASE', 'mongodb://heroku_jhkp1fw8:csdjcmbsfi8j7o0cki41c1md09@ds131997.mlab.com:31997/heroku_jhkp1fw8'),
             host: env('WEBSERVICE_HOST', '0.0.0.0'),
 			port: Number(env('WEBSERVICE_PORT', '3000')),
-			cron: env('WEBSERVICE_CRON', false)
+			cron: env('WEBSERVICE_CRON', true)
 		})
 	};
 }
