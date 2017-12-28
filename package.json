@@ -49,6 +49,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "make ci"
+    "test": "make ci",
+    "postinstall": "node pa11y-import.js"
   }
 }
