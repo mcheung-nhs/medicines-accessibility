@@ -24,6 +24,7 @@
     "node": ">=4"
   },
   "dependencies": {
+    "basic-auth": "~2.0.0",
     "body-parser": "~1.17.1",
     "chalk": "~1.1",
     "compression": "~1.6",
