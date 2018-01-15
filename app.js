@@ -22,6 +22,14 @@ const express = require('express');
 const hbs = require('express-hbs');
 const http = require('http');
 const pkg = require('./package.json');
+const config = require('./config.js');
+const utils = require('./utils.js');
+
+// Grab environment variables specified in Procfile or as Heroku config vars
+const username = process.env.USERNAME;
+const password = process.env.PASSWORD;
+const env      = process.env.NODE_ENV || 'development';
+const useAuth  = process.env.USE_AUTH || config.useAuth;
 
 module.exports = initApp;
 
@@ -29,7 +37,7 @@ module.exports = initApp;
 function initApp(config, callback) {
 	config = defaultConfig(config);
 
-	let webserviceUrl = config.webservice;
+    let webserviceUrl = config.webservice;
 	if (typeof webserviceUrl === 'object') {
 		webserviceUrl = `http://${webserviceUrl.host}:${webserviceUrl.port}/`;
 	}
@@ -39,6 +47,11 @@ function initApp(config, callback) {
 	app.express = express();
 	app.server = http.createServer(app.express);
 	app.webservice = createClient(webserviceUrl);
+
+    // Authentication
+    if (env === 'production' && useAuth === 'true') {
+        app.express.use(utils.basicAuth(username, password));
+    }
 
 	// Compression
 	app.express.use(compression());
